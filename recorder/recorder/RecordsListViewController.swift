@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 class RecordsListViewController: UIViewController,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet weak var recordsTableView: UITableView!
     
     var currentIndex:Int?
@@ -38,11 +38,13 @@ class RecordsListViewController: UIViewController,AVAudioPlayerDelegate,UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recordTableViewCell") as! RecordsListTableViewCell
-        cell.recordNameLabel.text = fileNames[indexPath.row]
+        cell.selectionStyle = .none
         
         if currentIndex != nil && currentIndex == indexPath.row && player != nil && player!.isPlaying  {
+            cell.recordNameLabel.text = fileNames[indexPath.row] + "   此文件播放中..."
             cell.playButton.setTitle("停止", for: .normal)
         }else {
+            cell.recordNameLabel.text = fileNames[indexPath.row]
             cell.playButton.setTitle("播放", for: .normal)
         }
         cell.playButton.tag = indexPath.row
@@ -58,7 +60,7 @@ class RecordsListViewController: UIViewController,AVAudioPlayerDelegate,UITableV
     func playButtonTapped(playButton:UIButton) {
         playFileAt(index: playButton.tag)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -66,12 +68,12 @@ class RecordsListViewController: UIViewController,AVAudioPlayerDelegate,UITableV
     
     func playFileAt(index:Int){
         
-        if player != nil {
+        if player != nil && player!.isPlaying {
             player?.stop()
             player = nil
             if let cell = recordsTableView.cellForRow(at: IndexPath.init(row: currentIndex!, section: 0)) as? RecordsListTableViewCell
             {
-                cell.playButton.setTitle("播放", for: .normal)
+                recordsTableView.reloadRows(at: [IndexPath.init(row: currentIndex!, section: 0)], with: .none)
             }
             if index == currentIndex{
                 return
@@ -83,25 +85,25 @@ class RecordsListViewController: UIViewController,AVAudioPlayerDelegate,UITableV
         if player != nil{
             player?.delegate = self
             player?.play()
-                let cell = recordsTableView.cellForRow(at: IndexPath.init(row: index, section: 0)) as! RecordsListTableViewCell
-            cell.playButton.setTitle("停止", for: .normal)
             currentIndex = index
+            recordsTableView.reloadRows(at: [IndexPath.init(row: index, section: 0)], with: .none)
         }
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        let cell = recordsTableView.cellForRow(at: IndexPath.init(row: currentIndex!, section: 0)) as! RecordsListTableViewCell
-        cell.playButton.setTitle("播放", for: .normal)
+        if let cell = recordsTableView.cellForRow(at: IndexPath.init(row: currentIndex!, section: 0)) as? RecordsListTableViewCell{
+            recordsTableView.reloadRows(at: [IndexPath.init(row: currentIndex!, section: 0)], with: .none)
+        }
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
