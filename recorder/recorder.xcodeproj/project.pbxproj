@@ -14,6 +14,8 @@
 		EA5674371EAC8011002B4B64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5674351EAC8011002B4B64 /* LaunchScreen.storyboard */; };
 		EA5674421EAC8011002B4B64 /* recorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5674411EAC8011002B4B64 /* recorderTests.swift */; };
 		EA56744D1EAC8011002B4B64 /* recorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56744C1EAC8011002B4B64 /* recorderUITests.swift */; };
+		EA56745B1EAC99CB002B4B64 /* RecordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56745A1EAC99CB002B4B64 /* RecordsListViewController.swift */; };
+		EA56745D1EAC9D25002B4B64 /* RecordsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56745C1EAC9D25002B4B64 /* RecordsListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		EA5674481EAC8011002B4B64 /* recorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = recorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA56744C1EAC8011002B4B64 /* recorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recorderUITests.swift; sourceTree = "<group>"; };
 		EA56744E1EAC8011002B4B64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA56745A1EAC99CB002B4B64 /* RecordsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsListViewController.swift; sourceTree = "<group>"; };
+		EA56745C1EAC9D25002B4B64 /* RecordsListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordsListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				EA5674331EAC8011002B4B64 /* Assets.xcassets */,
 				EA5674351EAC8011002B4B64 /* LaunchScreen.storyboard */,
 				EA5674381EAC8011002B4B64 /* Info.plist */,
+				EA56745A1EAC99CB002B4B64 /* RecordsListViewController.swift */,
+				EA56745C1EAC9D25002B4B64 /* RecordsListTableViewCell.swift */,
 			);
 			path = recorder;
 			sourceTree = "<group>";
@@ -262,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA56745B1EAC99CB002B4B64 /* RecordsListViewController.swift in Sources */,
 				EA56742F1EAC8011002B4B64 /* ViewController.swift in Sources */,
+				EA56745D1EAC9D25002B4B64 /* RecordsListTableViewCell.swift in Sources */,
 				EA56742D1EAC8011002B4B64 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
