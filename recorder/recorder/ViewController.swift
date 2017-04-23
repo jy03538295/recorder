@@ -51,7 +51,7 @@ class ViewController: UIViewController,AVAudioPlayerDelegate {
         let buttonItem = UIBarButtonItem.init(customView: button)
         self.navigationItem.setRightBarButton(buttonItem, animated: true)
         
-        var fileNames = UserDefaults.standard.array(forKey: "myFileNames") as? [String]
+        let fileNames = UserDefaults.standard.array(forKey: "myFileNames") as? [String]
         
         if fileNames == nil || fileNames?.count == 0{
             playBtn.isEnabled = false
@@ -99,8 +99,8 @@ class ViewController: UIViewController,AVAudioPlayerDelegate {
     
     @IBAction func playCurrentFile(_ sender: Any) {
         
-        if currentRecordFileName != nil {
-            var fileNames = UserDefaults.standard.array(forKey: "myFileNames") as? [String] ?? [String]()
+        if currentRecordFileName == nil {
+            let fileNames = UserDefaults.standard.array(forKey: "myFileNames") as? [String] ?? [String]()
             
             currentRecordFileName = fileNames.last
         }
